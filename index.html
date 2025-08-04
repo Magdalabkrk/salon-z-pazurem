@@ -288,7 +288,7 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                 </div>
                 
                 <div class="contact-form">
-                    <form id="contact-form" action="https://formspree.io/f/mnnzgneo" method="POST">
+                    <form id="contact-form" action="https://formspree.io/f/xjkoagvj" method="POST">
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Imię i nazwisko" required>
                         </div>
@@ -314,9 +314,12 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                         <div class="form-group">
                             <textarea name="message" placeholder="Wiadomość" rows="5"></textarea>
                         </div>
-                        <!-- Ukryte pole do ochrony przed spamem -->
+                        <!-- Ukryte pola Formspree -->
                         <input type="hidden" name="_subject" value="Nowa wiadomość ze strony Salon Z Pazurem">
                         <input type="hidden" name="_next" value="dziekuje.html">
+                        <input type="hidden" name="_captcha" value="false">
+                        <!-- Pole honeypot przeciwko spamowi -->
+                        <input type="text" name="_gotcha" style="display:none">
                         <button type="submit" class="btn btn-primary">Wyślij Wiadomość</button>
                     </form>
                 </div>
