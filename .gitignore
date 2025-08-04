@@ -1,0 +1,22 @@
+# Pliki systemowe
+.DS_Store
+Thumbs.db
+
+# Logi
+*.log
+npm-debug.log*
+
+# Foldery node_modules (jeśli będziesz używać npm)
+node_modules/
+
+# Pliki środowiska
+.env
+.env.local
+
+# Pliki IDE
+.vscode/
+.idea/
+
+# Pliki tymczasowe
+*.tmp
+*.temp
