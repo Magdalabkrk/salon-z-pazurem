@@ -6,15 +6,75 @@
     <title>Dziękujemy - Salon Kosmetyczny Z Pazurem</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .thank-you-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #000000, #333333);
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+        
+        .thank-you-content {
+            max-width: 600px;
+        }
+        
+        .thank-you-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #D4AF37;
+        }
+        
+        .thank-you-text {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .thank-you-button {
+            display: inline-block;
+            background: #D4AF37;
+            color: #000;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .thank-you-button:hover {
+            background: #B8860B;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .thank-you-title {
+                font-size: 2rem;
+            }
+            
+            .thank-you-text {
+                font-size: 1rem;
+            }
+            
+            .thank-you-button {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #000000, #333333); text-align: center; color: white; padding: 20px;">
-        <div style="max-width: 600px;">
-            <h1 style="font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 20px; color: #D4AF37;">Dziękujemy!</h1>
-            <p style="font-size: 1.2rem; margin-bottom: 30px; line-height: 1.6;">
+    <div class="thank-you-container">
+        <div class="thank-you-content">
+            <h1 class="thank-you-title">Dziękujemy!</h1>
+            <p class="thank-you-text">
                 Twoja wiadomość została wysłana pomyślnie. Odpowiem na nią tak szybko, jak to możliwe.
             </p>
-            <a href="index.html" style="display: inline-block; background: #D4AF37; color: #000; padding: 15px 30px; text-decoration: none; border-radius: 30px; font-weight: 600; transition: all 0.3s ease;">
+            <a href="index.html" class="thank-you-button">
                 Powrót do strony głównej
             </a>
         </div>
