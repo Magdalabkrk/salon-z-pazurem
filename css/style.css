@@ -22,8 +22,8 @@
     --shadow-heavy: 0 10px 40px rgba(0,0,0,0.2);
     
     /* Przejścia */
-    --transition: all 0.3s ease;
-    --transition-slow: all 0.6s ease;
+    --transition: all 0.2s ease;
+    --transition-slow: all 0.3s ease;
 }
 
 /* ===============================================
@@ -173,7 +173,7 @@ body {
     color: var(--white);
     z-index: 2;
     position: relative;
-    animation: fadeInUp 1s ease;
+    animation: fadeInUp 0.5s ease;
 }
 
 .hero-subtitle {

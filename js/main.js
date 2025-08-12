@@ -141,7 +141,7 @@ function initScrollAnimations() {
         // Ustaw początkowy stan
         element.style.opacity = '0';
         element.style.transform = 'translateY(30px)';
-        element.style.transition = `all 0.6s ease ${index * 0.1}s`;
+        element.style.transition = `all 0.3s ease ${index * 0.05}s`;
         
         // Obserwuj element
         observer.observe(element);
