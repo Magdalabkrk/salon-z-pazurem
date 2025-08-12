@@ -902,3 +902,117 @@ section {
         padding: 25px 15px;
     }
 }
+
+/* ===============================================
+   SEKCJA CERTYFIKATÓW
+   =============================================== */
+
+.certificates {
+    padding: 40px 0;
+    background: linear-gradient(135deg, var(--gray-light) 0%, var(--white) 100%);
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.certificate-item {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition);
+    background: var(--white);
+    padding: 10px;
+}
+
+.certificate-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.certificate-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.certificate-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Modal dla certyfikatów */
+.certificate-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+}
+
+.certificate-modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: var(--shadow-heavy);
+}
+
+.certificate-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: var(--white);
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10001;
+    transition: var(--transition);
+}
+
+.certificate-close:hover {
+    color: var(--secondary-color);
+}
+
+/* Responsywność dla certyfikatów */
+@media (max-width: 768px) {
+    .certificates {
+        padding: 30px 0;
+    }
+    
+    .certificates-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+    
+    .certificate-item img {
+        height: 150px;
+    }
+    
+    .certificate-modal-content {
+        max-width: 95%;
+        max-height: 85%;
+    }
+    
+    .certificate-close {
+        top: 10px;
+        right: 20px;
+        font-size: 30px;
+    }
+}

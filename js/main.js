@@ -327,6 +327,36 @@ function animateCounters() {
 }
 
 // ===============================================
+// GALERIA CERTYFIKATÓW
+// ===============================================
+
+function openCertificate(imageSrc) {
+    const modal = document.getElementById('certificateModal');
+    const modalImg = document.getElementById('certificateImage');
+    
+    modal.style.display = 'block';
+    modalImg.src = imageSrc;
+    
+    // Blokada przewijania strony
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCertificate() {
+    const modal = document.getElementById('certificateModal');
+    modal.style.display = 'none';
+    
+    // Przywrócenie przewijania strony
+    document.body.style.overflow = 'auto';
+}
+
+// Zamykanie modala klawiszem ESC
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeCertificate();
+    }
+});
+
+// ===============================================
 // KONSOLA - INFORMACJE DEWELOPERSKIE
 // ===============================================
 
@@ -335,6 +365,7 @@ console.log(`
 ✨ Elegancki design by AI Assistant
 📱 Responsywny i nowoczesny
 🚀 Zoptymalizowany pod wydajność
+📜 Galeria certyfikatów aktywna
 `);
 
 // Eksport funkcji (jeśli używane jako moduł)
@@ -344,6 +375,8 @@ if (typeof module !== 'undefined' && module.exports) {
         initScrollAnimations,
         initContactForm,
         initSmoothScrolling,
-        initMobileMenu
+        initMobileMenu,
+        openCertificate,
+        closeCertificate
     };
 }

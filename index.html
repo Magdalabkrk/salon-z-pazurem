@@ -108,6 +108,29 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
         </div>
     </section>
 
+    <!-- Certificates Section -->
+    <section class="certificates">
+        <div class="container">
+            <div class="certificates-grid">
+                <div class="certificate-item" onclick="openCertificate('images/Certyfikat1.jpg')">
+                    <img src="images/Certyfikat1.jpg" alt="Certyfikat 1">
+                </div>
+                <div class="certificate-item" onclick="openCertificate('images/Certyfikat2.jpg')">
+                    <img src="images/Certyfikat2.jpg" alt="Certyfikat 2">
+                </div>
+                <div class="certificate-item" onclick="openCertificate('images/Certyfikat3.jpg')">
+                    <img src="images/Certyfikat3.jpg" alt="Certyfikat 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Modal -->
+    <div id="certificateModal" class="certificate-modal" onclick="closeCertificate()">
+        <span class="certificate-close">&times;</span>
+        <img class="certificate-modal-content" id="certificateImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Certyfikat">
+    </div>
+
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
@@ -263,7 +286,7 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
            
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="images/manicure.jpg" alt="Manicure tradycyjny i hybrydowy">
+                    <img src="images/manicure/main.jpg" alt="Manicure tradycyjny i hybrydowy">
                     <div class="gallery-overlay">
                         <h4>Manicure</h4>
                         <p>Tradycyjny, hybrydowy i japoński</p>
@@ -271,7 +294,7 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/stylizacja-paznokci.jpg" alt="Stylizacja i przedłużanie paznokci">
+                    <img src="images/stylizacja-paznokci/main.jpg" alt="Stylizacja i przedłużanie paznokci">
                     <div class="gallery-overlay">
                         <h4>Stylizacja Paznokci</h4>
                         <p>Przedłużanie, korekta, uzupełnienie</p>
@@ -279,7 +302,7 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/dodatki-paznokcie.jpg" alt="French, wzorki i ozdoby">
+                    <img src="images/dodatki-paznokcie/main.jpg" alt="French, wzorki i ozdoby">
                     <div class="gallery-overlay">
                         <h4>Dodatki do Paznokci</h4>
                         <p>French, wzorki, ozdoby</p>
@@ -287,7 +310,7 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/pedicure.jpg" alt="Pedicure tradycyjny i hybrydowy">
+                    <img src="images/pedicure/main.jpg" alt="Pedicure tradycyjny i hybrydowy">
                     <div class="gallery-overlay">
                         <h4>Pedicure</h4>
                         <p>Tradycyjny i hybrydowy</p>
@@ -295,7 +318,7 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/depilacje.jpg" alt="Depilacje woskiem">
+                    <img src="images/depilacje/main.jpg" alt="Depilacje woskiem">
                     <div class="gallery-overlay">
                         <h4>Depilacje Woskiem</h4>
                         <p>Całe ciało, nogi, ręce, twarz</p>
@@ -303,7 +326,7 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/brwi-rzesy.jpg" alt="Stylizacja brwi i rzęs">
+                    <img src="images/brwi-rzesy/main.jpg" alt="Stylizacja brwi i rzęs">
                     <div class="gallery-overlay">
                         <h4>Stylizacja Brwi i Rzęs</h4>
                         <p>Henna, regulacja, stylizacja</p>
@@ -311,7 +334,7 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/makijaze.jpg" alt="Makijaże ślubne i wieczorowe">
+                    <img src="images/makijaze/main.jpg" alt="Makijaże ślubne i wieczorowe">
                     <div class="gallery-overlay">
                         <h4>Makijaże</h4>
                         <p>Ślubny, wieczorowy, dzienny</p>
@@ -319,7 +342,7 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/zabiegi-twarz.jpg" alt="Zabiegi pielęgnacyjne na twarz">
+                    <img src="images/zabiegi-twarz/main.jpg" alt="Zabiegi pielęgnacyjne na twarz">
                     <div class="gallery-overlay">
                         <h4>Zabiegi na Twarz</h4>
                         <p>Oczyszczające, nawilżające, przeciwzmarszczkowe</p>
@@ -327,7 +350,7 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/przekluwanie-uszu.jpg" alt="Przekłuwanie uszu">
+                    <img src="images/przekluwanie-uszu/main.jpg" alt="Przekłuwanie uszu">
                     <div class="gallery-overlay">
                         <h4>Przekłuwanie Uszu</h4>
                         <p>Bezpieczne dla dzieci i dorosłych</p>
