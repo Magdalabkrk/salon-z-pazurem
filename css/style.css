@@ -697,6 +697,26 @@ section {
     text-align: center;
 }
 
+/* Klikalny telefon i email */
+.phone-link,
+.email-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.phone-link:hover,
+.email-link:hover {
+    color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+.phone-link {
+    cursor: pointer;
+}
+
 .contact-form {
     background: var(--white);
     padding: 40px;
