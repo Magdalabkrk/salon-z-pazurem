@@ -142,7 +142,16 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
     <!-- Certificate Modal -->
     <div id="certificateModal" class="certificate-modal" onclick="closeCertificate()">
         <span class="certificate-close">&times;</span>
-        <img class="certificate-modal-content" id="certificateImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Certyfikat">
+        <button type="button" class="modal-nav-btn modal-prev" onclick="event.stopPropagation(); prevModalCertificate()" aria-label="Poprzedni certyfikat">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button type="button" class="modal-nav-btn modal-next" onclick="event.stopPropagation(); nextModalCertificate()" aria-label="Następny certyfikat">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <img class="certificate-modal-content" id="certificateImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Certyfikat" onclick="event.stopPropagation()">
+        <div class="modal-counter">
+            <span id="modal-cert-current">1</span> / <span id="modal-cert-total">10</span>
+        </div>
     </div>
 
     <!-- Services Section -->

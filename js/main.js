@@ -331,12 +331,23 @@ function animateCounters() {
 // GALERIA CERTYFIKATÓW
 // ===============================================
 
+let currentModalCertificate = 1;
+
 function openCertificate(imageSrc) {
     const modal = document.getElementById('certificateModal');
     const modalImg = document.getElementById('certificateImage');
     
+    // Znajdź numer certyfikatu na podstawie src
+    const certNumber = imageSrc.match(/Certyfikat(\d+)\.jpg/);
+    if (certNumber) {
+        currentModalCertificate = parseInt(certNumber[1]);
+    }
+    
     modal.style.display = 'block';
     modalImg.src = imageSrc;
+    
+    // Aktualizuj licznik i przyciski modala
+    updateModalDisplay();
     
     // Blokada przewijania strony
     document.body.style.overflow = 'hidden';
@@ -350,10 +361,67 @@ function closeCertificate() {
     document.body.style.overflow = 'auto';
 }
 
-// Zamykanie modala klawiszem ESC
+function updateModalDisplay() {
+    const modalImg = document.getElementById('certificateImage');
+    const modalCurrent = document.getElementById('modal-cert-current');
+    const modalTotal = document.getElementById('modal-cert-total');
+    const prevBtn = document.querySelector('.modal-prev');
+    const nextBtn = document.querySelector('.modal-next');
+    
+    // Aktualizuj obraz
+    if (modalImg) {
+        modalImg.src = `images/Certyfikat${currentModalCertificate}.jpg`;
+        modalImg.alt = `Certyfikat ${currentModalCertificate}`;
+    }
+    
+    // Aktualizuj licznik
+    if (modalCurrent) {
+        modalCurrent.textContent = currentModalCertificate;
+    }
+    if (modalTotal) {
+        modalTotal.textContent = totalCertificates;
+    }
+    
+    // Aktualizuj stan przycisków
+    if (prevBtn) {
+        prevBtn.disabled = currentModalCertificate === 1;
+    }
+    if (nextBtn) {
+        nextBtn.disabled = currentModalCertificate === totalCertificates;
+    }
+}
+
+function prevModalCertificate() {
+    if (currentModalCertificate > 1) {
+        currentModalCertificate--;
+        updateModalDisplay();
+    }
+}
+
+function nextModalCertificate() {
+    if (currentModalCertificate < totalCertificates) {
+        currentModalCertificate++;
+        updateModalDisplay();
+    }
+}
+
+// Zamykanie modala klawiszem ESC i nawigacja strzałkami
 document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeCertificate();
+    const modal = document.getElementById('certificateModal');
+    if (modal.style.display === 'block') {
+        switch(event.key) {
+            case 'Escape':
+                closeCertificate();
+                break;
+            case 'ArrowLeft':
+                event.preventDefault();
+                prevModalCertificate();
+                break;
+            case 'ArrowRight':
+                event.preventDefault();
+                nextModalCertificate();
+                break;
+        }
     }
 });
 
@@ -530,6 +598,9 @@ if (typeof module !== 'undefined' && module.exports) {
         initVisitorCounter,
         prevCertificate,
         nextCertificate,
-        updateCertificateDisplay
+        updateCertificateDisplay,
+        prevModalCertificate,
+        nextModalCertificate,
+        updateModalDisplay
     };
 }
