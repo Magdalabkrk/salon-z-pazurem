@@ -84,11 +84,33 @@ body {
     align-items: center;
 }
 
-.nav-logo h2 {
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-logo .logo-img {
+    height: 50px;
+    width: auto;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.nav-logo .logo-text {
     font-family: var(--font-primary);
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: var(--secondary-color);
-    font-weight: 700;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.navbar.scrolled .logo-img {
+    height: 40px;
+}
+
+.navbar.scrolled .logo-text {
+    font-size: 1.3rem;
 }
 
 .nav-menu {
@@ -861,11 +883,22 @@ section {
 
 .footer-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-bottom: 30px;
     position: relative;
     z-index: 3;
+}
+
+.footer-logo {
+    text-align: center;
+}
+
+.footer-logo-img {
+    height: 60px;
+    width: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
 .footer-logo h3 {
@@ -994,6 +1027,22 @@ section {
         display: flex;
     }
 
+    .nav-logo .logo-img {
+        height: 40px;
+    }
+
+    .nav-logo .logo-text {
+        font-size: 1.2rem;
+    }
+
+    .navbar.scrolled .logo-img {
+        height: 35px;
+    }
+
+    .navbar.scrolled .logo-text {
+        font-size: 1.1rem;
+    }
+
     .hero-title {
         font-size: 2.5rem;
     }
@@ -1056,6 +1105,18 @@ section {
 
     .separator-ornament {
         max-width: 250px;
+    }
+
+    .footer-logo-img {
+        height: 50px;
+    }
+
+    .nav-logo .logo-text {
+        font-size: 1rem;
+    }
+
+    .navbar.scrolled .logo-text {
+        font-size: 0.9rem;
     }
 
     section {
