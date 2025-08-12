@@ -427,26 +427,61 @@ function animateCounter(element, targetNumber) {
 `);
 
 // ===============================================
-// ROZWIJANA GALERIA CERTYFIKATÓW
+// CAROUSEL CERTYFIKATÓW
 // ===============================================
 
-function toggleCertificates() {
-    const expanded = document.getElementById('certificates-expanded');
-    const toggle = document.querySelector('.certificates-toggle');
-    const toggleText = document.querySelector('.toggle-text');
+let currentCertificate = 1;
+const totalCertificates = 10;
+
+function updateCertificateDisplay() {
+    const certImage = document.getElementById('current-certificate');
+    const certCurrent = document.getElementById('cert-current');
+    const certTotal = document.getElementById('cert-total');
     
-    if (expanded.classList.contains('show')) {
-        // Zamknij galerię
-        expanded.classList.remove('show');
-        toggle.classList.remove('expanded');
-        toggleText.textContent = 'Zobacz wszystkie certyfikaty';
-    } else {
-        // Otwórz galerię
-        expanded.classList.add('show');
-        toggle.classList.add('expanded');
-        toggleText.textContent = 'Ukryj certyfikaty';
+    if (certImage) {
+        certImage.src = `images/Certyfikat${currentCertificate}.jpg`;
+        certImage.alt = `Certyfikat ${currentCertificate}`;
+    }
+    
+    if (certCurrent) {
+        certCurrent.textContent = currentCertificate;
+    }
+    
+    if (certTotal) {
+        certTotal.textContent = totalCertificates;
+    }
+    
+    // Aktualizuj stan przycisków
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    if (prevBtn) {
+        prevBtn.disabled = currentCertificate === 1;
+    }
+    
+    if (nextBtn) {
+        nextBtn.disabled = currentCertificate === totalCertificates;
     }
 }
+
+function prevCertificate() {
+    if (currentCertificate > 1) {
+        currentCertificate--;
+        updateCertificateDisplay();
+    }
+}
+
+function nextCertificate() {
+    if (currentCertificate < totalCertificates) {
+        currentCertificate++;
+        updateCertificateDisplay();
+    }
+}
+
+// Inicjalizacja carousel po załadowaniu strony
+document.addEventListener('DOMContentLoaded', function() {
+    updateCertificateDisplay();
+});
 
 // Eksport funkcji (jeśli używane jako moduł)
 if (typeof module !== 'undefined' && module.exports) {
@@ -459,6 +494,8 @@ if (typeof module !== 'undefined' && module.exports) {
         openCertificate,
         closeCertificate,
         initVisitorCounter,
-        toggleCertificates
+        prevCertificate,
+        nextCertificate,
+        updateCertificateDisplay
     };
 }

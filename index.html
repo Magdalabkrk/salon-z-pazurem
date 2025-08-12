@@ -99,52 +99,33 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                         </div>
                     </div>
 
-                    <!-- Sekcja certyfikatów w O mnie -->
-                    <div class="certificates-about">
-                        <h3>Moje Certyfikaty</h3>
-                        <div class="certificate-main">
-                            <img src="images/Certyfikat1.jpg" alt="Certyfikat główny" onclick="openCertificate('images/Certyfikat1.jpg')">
-                        </div>
-                        <button type="button" class="certificates-toggle" onclick="toggleCertificates()">
-                            <span class="toggle-text">Zobacz wszystkie certyfikaty</span>
-                            <i class="fas fa-chevron-down toggle-icon"></i>
-                        </button>
-                        <div class="certificates-grid-expanded" id="certificates-expanded">
-                            <div class="certificate-item" onclick="openCertificate('images/Certyfikat2.jpg')">
-                                <img src="images/Certyfikat2.jpg" alt="Certyfikat 2">
-                            </div>
-                            <div class="certificate-item" onclick="openCertificate('images/Certyfikat3.jpg')">
-                                <img src="images/Certyfikat3.jpg" alt="Certyfikat 3">
-                            </div>
-                            <div class="certificate-item" onclick="openCertificate('images/Certyfikat4.jpg')">
-                                <img src="images/Certyfikat4.jpg" alt="Certyfikat 4">
-                            </div>
-                            <div class="certificate-item" onclick="openCertificate('images/Certyfikat5.jpg')">
-                                <img src="images/Certyfikat5.jpg" alt="Certyfikat 5">
-                            </div>
-                            <div class="certificate-item" onclick="openCertificate('images/Certyfikat6.jpg')">
-                                <img src="images/Certyfikat6.jpg" alt="Certyfikat 6">
-                            </div>
-                            <div class="certificate-item" onclick="openCertificate('images/Certyfikat7.jpg')">
-                                <img src="images/Certyfikat7.jpg" alt="Certyfikat 7">
-                            </div>
-                            <div class="certificate-item" onclick="openCertificate('images/Certyfikat8.jpg')">
-                                <img src="images/Certyfikat8.jpg" alt="Certyfikat 8">
-                            </div>
-                            <div class="certificate-item" onclick="openCertificate('images/Certyfikat9.jpg')">
-                                <img src="images/Certyfikat9.jpg" alt="Certyfikat 9">
-                            </div>
-                            <div class="certificate-item" onclick="openCertificate('images/Certyfikat10.jpg')">
-                                <img src="images/Certyfikat10.jpg" alt="Certyfikat 10">
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="about-image">
                     <div class="image-container">
                         <img src="images/o_mnie.jpg" alt="Emilia Drab - Kosmetyczka">
                         <div class="image-overlay"></div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sekcja certyfikatów przesuniętą niżej -->
+        <div class="container">
+            <div class="certificates-about">
+                <h3>Moje Certyfikaty</h3>
+                <div class="certificates-carousel">
+                    <button type="button" class="carousel-btn prev-btn" onclick="prevCertificate()" aria-label="Poprzedni certyfikat">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="certificate-display">
+                        <img id="current-certificate" src="images/Certyfikat1.jpg" alt="Certyfikat" onclick="openCertificate(this.src)">
+                    </div>
+                    <button type="button" class="carousel-btn next-btn" onclick="nextCertificate()" aria-label="Następny certyfikat">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="certificate-counter">
+                    <span id="cert-current">1</span> / <span id="cert-total">10</span>
                 </div>
             </div>
         </div>

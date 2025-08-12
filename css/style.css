@@ -412,119 +412,89 @@ section {
 }
 
 /* ===============================================
-   GALERIA CERTYFIKATÓW W SEKCJI O MNIE
+   CAROUSEL CERTYFIKATÓW W SEKCJI O MNIE
    =============================================== */
 
 .certificates-about {
-    margin-top: 40px;
-    padding-top: 30px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 80px;
+    padding: 40px 0;
+    text-align: center;
+    background: var(--gray-light);
+    border-radius: 15px;
 }
 
 .certificates-about h3 {
     font-family: var(--font-primary);
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: var(--primary-color);
-    margin-bottom: 20px;
-    text-align: center;
+    margin-bottom: 40px;
 }
 
-.certificate-main {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.certificate-main img {
-    max-width: 200px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: var(--shadow-medium);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.certificate-main img:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-heavy);
-}
-
-.certificates-toggle {
+.certificates-carousel {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    width: 100%;
-    padding: 12px 20px;
-    background: var(--secondary-color);
-    color: var(--primary-color);
-    border: none;
-    border-radius: 25px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
+    gap: 30px;
     margin-bottom: 20px;
-    font-size: 0.9rem;
 }
 
-.certificates-toggle:hover {
-    background: var(--accent-color);
-    transform: translateY(-2px);
-}
-
-.toggle-icon {
-    transition: transform 0.3s ease;
-}
-
-.certificates-toggle.expanded .toggle-icon {
-    transform: rotate(180deg);
-}
-
-.certificates-grid-expanded {
-    display: none;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
-    animation: fadeIn 0.3s ease;
-}
-
-.certificates-grid-expanded.show {
-    display: grid;
-}
-
-.certificates-grid-expanded .certificate-item {
+.carousel-btn {
+    background: var(--secondary-color);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: var(--primary-color);
+    font-size: 1.2rem;
     cursor: pointer;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: var(--shadow-light);
     transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-light);
 }
 
-.certificates-grid-expanded .certificate-item:hover {
-    transform: translateY(-3px);
+.carousel-btn:hover {
+    background: var(--accent-color);
+    transform: scale(1.1);
     box-shadow: var(--shadow-medium);
 }
 
-.certificates-grid-expanded .certificate-item img {
-    width: 100%;
-    height: 100px;
-    object-fit: cover;
+.carousel-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.certificate-display {
+    flex: 0 0 auto;
+}
+
+.certificate-display img {
+    max-width: 300px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: var(--shadow-heavy);
+    cursor: pointer;
     transition: var(--transition);
 }
 
-.certificates-grid-expanded .certificate-item:hover img {
-    transform: scale(1.1);
+.certificate-display img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.certificate-counter {
+    font-size: 1.1rem;
+    color: var(--gray-medium);
+    font-weight: 500;
+}
+
+.certificate-counter #cert-current {
+    color: var(--secondary-color);
+    font-weight: 700;
 }
 
 /* ===============================================
@@ -1182,20 +1152,26 @@ section {
     }
 
     .certificates-about h3 {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 
-    .certificate-main img {
-        max-width: 150px;
+    .certificates-carousel {
+        gap: 15px;
     }
 
-    .certificates-grid-expanded {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 10px;
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
 
-    .certificates-grid-expanded .certificate-item img {
-        height: 80px;
+    .certificate-display img {
+        max-width: 250px;
+        max-height: 300px;
+    }
+
+    .certificate-counter {
+        font-size: 1rem;
     }
 
     .services-grid {
