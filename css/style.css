@@ -669,6 +669,34 @@ section {
     margin-right: 5px;
 }
 
+/* Social links w sekcji kontakt */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+.social-link i {
+    margin-right: 8px;
+    width: 16px;
+    text-align: center;
+}
+
 .contact-form {
     background: var(--white);
     padding: 40px;
