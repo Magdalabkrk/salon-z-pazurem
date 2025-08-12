@@ -430,21 +430,49 @@ function animateCounter(element, targetNumber) {
 // CAROUSEL CERTYFIKATÓW
 // ===============================================
 
-let currentCertificate = 1;
+let currentCertificateStart = 1;
 const totalCertificates = 10;
 
+function getVisibleCertificates() {
+    if (window.innerWidth <= 480) {
+        return 1;
+    } else if (window.innerWidth <= 768) {
+        return 2;
+    } else {
+        return 3;
+    }
+}
+
 function updateCertificateDisplay() {
-    const certImage = document.getElementById('current-certificate');
+    const visibleCertificates = getVisibleCertificates();
+    
+    // Aktualizuj źródła obrazów dla widocznych certyfikatów
+    for (let i = 0; i < 3; i++) {
+        const certImage = document.getElementById(`certificate-${i + 1}`);
+        const certIndex = currentCertificateStart + i;
+        
+        if (certImage) {
+            if (i < visibleCertificates && certIndex <= totalCertificates) {
+                certImage.src = `images/Certyfikat${certIndex}.jpg`;
+                certImage.alt = `Certyfikat ${certIndex}`;
+                certImage.parentElement.style.display = 'block';
+            } else {
+                certImage.parentElement.style.display = 'none';
+            }
+        }
+    }
+    
+    // Aktualizuj licznik
     const certCurrent = document.getElementById('cert-current');
     const certTotal = document.getElementById('cert-total');
     
-    if (certImage) {
-        certImage.src = `images/Certyfikat${currentCertificate}.jpg`;
-        certImage.alt = `Certyfikat ${currentCertificate}`;
-    }
-    
     if (certCurrent) {
-        certCurrent.textContent = currentCertificate;
+        const endIndex = Math.min(currentCertificateStart + visibleCertificates - 1, totalCertificates);
+        if (visibleCertificates === 1) {
+            certCurrent.textContent = currentCertificateStart;
+        } else {
+            certCurrent.textContent = `${currentCertificateStart}-${endIndex}`;
+        }
     }
     
     if (certTotal) {
@@ -456,27 +484,33 @@ function updateCertificateDisplay() {
     const nextBtn = document.querySelector('.next-btn');
     
     if (prevBtn) {
-        prevBtn.disabled = currentCertificate === 1;
+        prevBtn.disabled = currentCertificateStart === 1;
     }
     
     if (nextBtn) {
-        nextBtn.disabled = currentCertificate === totalCertificates;
+        nextBtn.disabled = currentCertificateStart + visibleCertificates - 1 >= totalCertificates;
     }
 }
 
 function prevCertificate() {
-    if (currentCertificate > 1) {
-        currentCertificate--;
+    if (currentCertificateStart > 1) {
+        currentCertificateStart--;
         updateCertificateDisplay();
     }
 }
 
 function nextCertificate() {
-    if (currentCertificate < totalCertificates) {
-        currentCertificate++;
+    const visibleCertificates = getVisibleCertificates();
+    if (currentCertificateStart + visibleCertificates - 1 < totalCertificates) {
+        currentCertificateStart++;
         updateCertificateDisplay();
     }
 }
+
+// Dodaj event listener dla zmiany rozmiaru okna
+window.addEventListener('resize', function() {
+    updateCertificateDisplay();
+});
 
 // Inicjalizacja carousel po załadowaniu strony
 document.addEventListener('DOMContentLoaded', function() {
