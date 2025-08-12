@@ -426,6 +426,28 @@ function animateCounter(element, targetNumber) {
 
 `);
 
+// ===============================================
+// ROZWIJANA GALERIA CERTYFIKATÓW
+// ===============================================
+
+function toggleCertificates() {
+    const expanded = document.getElementById('certificates-expanded');
+    const toggle = document.querySelector('.certificates-toggle');
+    const toggleText = document.querySelector('.toggle-text');
+    
+    if (expanded.classList.contains('show')) {
+        // Zamknij galerię
+        expanded.classList.remove('show');
+        toggle.classList.remove('expanded');
+        toggleText.textContent = 'Zobacz wszystkie certyfikaty';
+    } else {
+        // Otwórz galerię
+        expanded.classList.add('show');
+        toggle.classList.add('expanded');
+        toggleText.textContent = 'Ukryj certyfikaty';
+    }
+}
+
 // Eksport funkcji (jeśli używane jako moduł)
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
@@ -436,6 +458,7 @@ if (typeof module !== 'undefined' && module.exports) {
         initMobileMenu,
         openCertificate,
         closeCertificate,
-        initVisitorCounter
+        initVisitorCounter,
+        toggleCertificates
     };
 }

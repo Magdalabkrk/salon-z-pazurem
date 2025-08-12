@@ -412,6 +412,122 @@ section {
 }
 
 /* ===============================================
+   GALERIA CERTYFIKATÓW W SEKCJI O MNIE
+   =============================================== */
+
+.certificates-about {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.certificates-about h3 {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.certificate-main {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.certificate-main img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: var(--shadow-medium);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.certificate-main img:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-heavy);
+}
+
+.certificates-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 20px;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.certificates-toggle:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.certificates-toggle.expanded .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.certificates-grid-expanded {
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.certificates-grid-expanded.show {
+    display: grid;
+}
+
+.certificates-grid-expanded .certificate-item {
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition);
+}
+
+.certificates-grid-expanded .certificate-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.certificates-grid-expanded .certificate-item img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.certificates-grid-expanded .certificate-item:hover img {
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===============================================
    SEKCJA USŁUG
    =============================================== */
 
@@ -1063,6 +1179,23 @@ section {
     .about-text .title-divider,
     .contact-info .title-divider {
         margin: 0 auto 30px;
+    }
+
+    .certificates-about h3 {
+        font-size: 1.3rem;
+    }
+
+    .certificate-main img {
+        max-width: 150px;
+    }
+
+    .certificates-grid-expanded {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 10px;
+    }
+
+    .certificates-grid-expanded .certificate-item img {
+        height: 80px;
     }
 
     .services-grid {
