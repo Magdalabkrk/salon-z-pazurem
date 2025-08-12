@@ -481,6 +481,28 @@ section {
     margin-bottom: 20px;
 }
 
+.service-details {
+    text-align: left;
+}
+
+.service-details p {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.service-details strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.service-details small {
+    color: var(--gray-medium);
+    font-size: 0.85rem;
+    font-style: italic;
+    display: block;
+    margin-top: 2px;
+}
+
 .service-price {
     font-size: 1.2rem;
     font-weight: 700;
