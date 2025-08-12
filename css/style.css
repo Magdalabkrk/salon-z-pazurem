@@ -566,7 +566,15 @@ section {
     font-family: var(--font-primary);
     font-size: 1.3rem;
     color: var(--secondary-color);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+}
+
+.gallery-overlay p {
+    color: var(--white);
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 15px;
+    opacity: 0.9;
 }
 
 .gallery-overlay i {
