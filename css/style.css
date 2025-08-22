@@ -50,6 +50,7 @@ body {
     color: var(--gray-dark);
     background-color: var(--white);
     overflow-x: hidden;
+    padding-top: env(safe-area-inset-top, 0); /* iOS notch */
 }
 
 .container {
@@ -66,10 +67,11 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background: transparent;
+    background: rgba(0,0,0,0.55);
     z-index: 1000;
     transition: var(--transition);
     padding: 15px 0;
+    backdrop-filter: blur(6px);
 }
 
 .navbar.scrolled {
