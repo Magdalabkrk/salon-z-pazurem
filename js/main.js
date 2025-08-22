@@ -352,6 +352,9 @@ const galleryData = {
     ],
     'dodatki-paznokcie': [
         '1.jpeg', '2.jpg', '3.jpg'
+    ],
+    'makijaze': [
+        '1.jpg'
     ]
 };
 
