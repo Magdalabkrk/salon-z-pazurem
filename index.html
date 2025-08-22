@@ -154,6 +154,24 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
         </div>
     </div>
 
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="gallery-modal" onclick="closeGallery()">
+        <span class="gallery-close">&times;</span>
+        <button type="button" class="modal-nav-btn gallery-prev" onclick="event.stopPropagation(); prevGalleryImage()" aria-label="Poprzednie zdjęcie">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button type="button" class="modal-nav-btn gallery-next" onclick="event.stopPropagation(); nextGalleryImage()" aria-label="Następne zdjęcie">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <img class="gallery-modal-content" id="galleryImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Zdjęcie z galerii" onclick="event.stopPropagation()">
+        <div class="gallery-modal-info">
+            <h3 id="gallery-category-title">Galeria</h3>
+            <div class="gallery-modal-counter">
+                <span id="gallery-current">1</span> / <span id="gallery-total">1</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
@@ -308,7 +326,7 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openGallery('manicure', 'Manicure')">
                     <img src="images/manicure/1.jpeg" alt="Manicure tradycyjny i hybrydowy">
                     <div class="gallery-overlay">
                         <h4>Manicure</h4>
@@ -316,7 +334,7 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openGallery('stylizacja-paznokci', 'Stylizacja Paznokci')">
                     <img src="images/stylizacja-paznokci/1.jpeg" alt="Stylizacja i przedłużanie paznokci">
                     <div class="gallery-overlay">
                         <h4>Stylizacja Paznokci</h4>
@@ -324,7 +342,7 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openGallery('dodatki-paznokcie', 'Dodatki do Paznokci')">
                     <img src="images/dodatki-paznokcie/1.jpeg" alt="French, wzorki i ozdoby">
                     <div class="gallery-overlay">
                         <h4>Dodatki do Paznokci</h4>
@@ -332,7 +350,7 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openGallery('pedicure', 'Pedicure')">
                     <img src="images/pedicure/1.jpeg" alt="Pedicure tradycyjny i hybrydowy">
                     <div class="gallery-overlay">
                         <h4>Pedicure</h4>
@@ -348,7 +366,7 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openGallery('brwi-rzesy', 'Stylizacja Brwi i Rzęs')">
                     <img src="images/brwi-rzesy/1.jpg" alt="Stylizacja brwi i rzęs">
                     <div class="gallery-overlay">
                         <h4>Stylizacja Brwi i Rzęs</h4>

@@ -328,6 +328,133 @@ function animateCounters() {
 }
 
 // ===============================================
+// GALERIA ZDJĘĆ
+// ===============================================
+
+// Dane galerii - listy zdjęć dla każdej kategorii
+const galleryData = {
+    'manicure': [
+        '1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpg', 
+        '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg', 
+        '11.jpg', '12.jpg', '13.jpg'
+    ],
+    'stylizacja-paznokci': [
+        '1.jpeg', '2.jpeg', '3.jpg', '4.jpg', '5.jpg', 
+        '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg', 
+        '11.jpg', '12.jpg', '13.jpg'
+    ],
+    'brwi-rzesy': [
+        '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', 
+        '6.jpg', '7.jpg', '8.jpg', '9.jpg'
+    ],
+    'pedicure': [
+        '1.jpeg', '2.jpeg'
+    ],
+    'dodatki-paznokcie': [
+        '1.jpeg', '2.jpg', '3.jpg'
+    ]
+};
+
+let currentGalleryCategory = '';
+let currentGalleryIndex = 0;
+
+function openGallery(category, title) {
+    if (!galleryData[category]) {
+        console.log('Brak zdjęć dla kategorii:', category);
+        return;
+    }
+
+    currentGalleryCategory = category;
+    currentGalleryIndex = 0;
+    
+    const modal = document.getElementById('galleryModal');
+    const titleElement = document.getElementById('gallery-category-title');
+    
+    modal.style.display = 'block';
+    titleElement.textContent = title;
+    
+    updateGalleryDisplay();
+    
+    // Blokada przewijania strony
+    document.body.style.overflow = 'hidden';
+}
+
+function closeGallery() {
+    const modal = document.getElementById('galleryModal');
+    modal.style.display = 'none';
+    
+    // Przywrócenie przewijania strony
+    document.body.style.overflow = 'auto';
+}
+
+function updateGalleryDisplay() {
+    const galleryImg = document.getElementById('galleryImage');
+    const currentSpan = document.getElementById('gallery-current');
+    const totalSpan = document.getElementById('gallery-total');
+    const prevBtn = document.querySelector('.gallery-prev');
+    const nextBtn = document.querySelector('.gallery-next');
+    
+    const images = galleryData[currentGalleryCategory];
+    
+    if (galleryImg && images && images[currentGalleryIndex]) {
+        galleryImg.src = `images/${currentGalleryCategory}/${images[currentGalleryIndex]}`;
+        galleryImg.alt = `${currentGalleryCategory} ${currentGalleryIndex + 1}`;
+    }
+    
+    if (currentSpan) {
+        currentSpan.textContent = currentGalleryIndex + 1;
+    }
+    
+    if (totalSpan && images) {
+        totalSpan.textContent = images.length;
+    }
+    
+    // Aktualizuj stan przycisków
+    if (prevBtn) {
+        prevBtn.disabled = currentGalleryIndex === 0;
+    }
+    
+    if (nextBtn && images) {
+        nextBtn.disabled = currentGalleryIndex === images.length - 1;
+    }
+}
+
+function prevGalleryImage() {
+    if (currentGalleryIndex > 0) {
+        currentGalleryIndex--;
+        updateGalleryDisplay();
+    }
+}
+
+function nextGalleryImage() {
+    const images = galleryData[currentGalleryCategory];
+    if (images && currentGalleryIndex < images.length - 1) {
+        currentGalleryIndex++;
+        updateGalleryDisplay();
+    }
+}
+
+// Obsługa klawiszy dla galerii
+document.addEventListener('keydown', function(event) {
+    const galleryModal = document.getElementById('galleryModal');
+    if (galleryModal.style.display === 'block') {
+        switch(event.key) {
+            case 'Escape':
+                closeGallery();
+                break;
+            case 'ArrowLeft':
+                event.preventDefault();
+                prevGalleryImage();
+                break;
+            case 'ArrowRight':
+                event.preventDefault();
+                nextGalleryImage();
+                break;
+        }
+    }
+});
+
+// ===============================================
 // GALERIA CERTYFIKATÓW
 // ===============================================
 
@@ -601,6 +728,11 @@ if (typeof module !== 'undefined' && module.exports) {
         updateCertificateDisplay,
         prevModalCertificate,
         nextModalCertificate,
-        updateModalDisplay
+        updateModalDisplay,
+        openGallery,
+        closeGallery,
+        prevGalleryImage,
+        nextGalleryImage,
+        updateGalleryDisplay
     };
 }
