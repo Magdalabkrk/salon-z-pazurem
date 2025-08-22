@@ -626,8 +626,6 @@ function animateVisitorCounter(element, targetNumber) {
     }, 16);
 }
 
-`);
-
 // ===============================================
 // CAROUSEL CERTYFIKATÓW
 // ===============================================
