@@ -154,21 +154,40 @@ function initScrollAnimations() {
 // ===============================================
 
 function initContactForm() {
+    // Inicjalizacja EmailJS
+    emailjs.init("iaI1bzUrqLe1I3z0K"); // Twój klucz publiczny EmailJS
+    
     const form = document.getElementById('contact-form');
+    const statusDiv = document.getElementById('form-status');
 
     if (form) {
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Zbierz dane z formularza
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
+            // Pokaż ładowanie
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Wysyłanie...';
+            submitBtn.disabled = true;
 
-            // Walidacja
-            if (validateForm(data)) {
-                showMessage('Dziękujemy za wiadomość! Skontaktujemy się wkrótce.', 'success');
-                form.reset();
-            }
+            // Wyślij email przez EmailJS
+            emailjs.sendForm('service_6l8t1mk', 'template_m3pzef2', form)
+                .then(function() {
+                    statusDiv.innerHTML = '<p style="color: green;">✅ Wiadomość została wysłana! Skontaktujemy się wkrótce.</p>';
+                    form.reset();
+                    
+                    // Przekieruj na stronę dzięki po 2 sekundach
+                    setTimeout(function() {
+                        window.location.href = 'dziekuje.html';
+                    }, 2000);
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    statusDiv.innerHTML = '<p style="color: red;">❌ Wystąpił błąd. Spróbuj ponownie lub zadzwoń: 668 567 543</p>';
+                })
+                .finally(function() {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
         });
     }
 }
