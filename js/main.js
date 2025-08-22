@@ -565,6 +565,8 @@ console.log(`
 📱 Responsywny i nowoczesny
 🚀 Zoptymalizowany pod wydajność
 📜 Galeria certyfikatów aktywna
+`);
+
 // ===============================================
 // LICZNIK ODWIEDZIN
 // ===============================================
@@ -648,13 +650,13 @@ function updateCertificateDisplay() {
 
     // Aktualizuj źródła obrazów dla widocznych certyfikatów
     for (let i = 0; i < 3; i++) {
-        const certImage = document.getElementById(`certificate-${i + 1}`);
+        const certImage = document.getElementById(`certificate - ${ i + 1}`);
         const certIndex = currentCertificateStart + i;
 
         if (certImage) {
             if (i < visibleCertificates && certIndex <= totalCertificates) {
-                certImage.src = `images/Certyfikat${certIndex}.jpg`;
-                certImage.alt = `Certyfikat ${certIndex}`;
+                certImage.src = `images / Certyfikat${ certIndex }.jpg`;
+                certImage.alt = `Certyfikat ${ certIndex }`;
                 certImage.parentElement.style.display = 'block';
             } else {
                 certImage.parentElement.style.display = 'none';
@@ -671,7 +673,7 @@ function updateCertificateDisplay() {
         if (visibleCertificates === 1) {
             certCurrent.textContent = currentCertificateStart;
         } else {
-            certCurrent.textContent = `${currentCertificateStart}-${endIndex}`;
+            certCurrent.textContent = `${ currentCertificateStart } - ${ endIndex }`;
         }
     }
 
