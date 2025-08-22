@@ -2,7 +2,7 @@
 // ELEGANCKI SALON KOSMETYCZNY - JAVASCRIPT
 // ===============================================
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Inicjalizacja wszystkich funkcji
     initNavigation();
     initScrollAnimations();
@@ -19,30 +19,30 @@ document.addEventListener('DOMContentLoaded', function() {
 function initNavigation() {
     const navbar = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     // Efekt przewijania nawigacji
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         if (window.scrollY > 100) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-        
+
         // Aktualizacja aktywnego linku
         updateActiveNavLink();
     });
-    
+
     // Podświetlanie aktywnej sekcji
     function updateActiveNavLink() {
         const sections = document.querySelectorAll('section[id]');
         const scrollPos = window.scrollY + 150;
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
             const sectionId = section.getAttribute('id');
             const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-            
+
             if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
                 navLinks.forEach(link => link.classList.remove('active'));
                 if (navLink) navLink.classList.add('active');
@@ -59,23 +59,23 @@ function initMobileMenu() {
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     // Toggle menu
-    navToggle.addEventListener('click', function() {
+    navToggle.addEventListener('click', function () {
         navMenu.classList.toggle('active');
         navToggle.classList.toggle('active');
     });
-    
+
     // Zamknij menu po kliknięciu w link
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function () {
             navMenu.classList.remove('active');
             navToggle.classList.remove('active');
         });
     });
-    
+
     // Zamknij menu po kliknięciu poza nim
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
             navMenu.classList.remove('active');
             navToggle.classList.remove('active');
@@ -89,17 +89,17 @@ function initMobileMenu() {
 
 function initSmoothScrolling() {
     const links = document.querySelectorAll('a[href^="#"]');
-    
+
     links.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
-            
+
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
+
             if (targetSection) {
                 const offsetTop = targetSection.offsetTop - 80;
-                
+
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
@@ -119,8 +119,8 @@ function initScrollAnimations() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
-    const observer = new IntersectionObserver(function(entries) {
+
+    const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
@@ -128,7 +128,7 @@ function initScrollAnimations() {
             }
         });
     }, observerOptions);
-    
+
     // Elementy do animacji
     const animatedElements = document.querySelectorAll(`
         .service-card,
@@ -137,13 +137,13 @@ function initScrollAnimations() {
         .about-text,
         .about-image
     `);
-    
+
     animatedElements.forEach((element, index) => {
         // Ustaw początkowy stan
         element.style.opacity = '0';
         element.style.transform = 'translateY(30px)';
         element.style.transition = `all 0.3s ease ${index * 0.05}s`;
-        
+
         // Obserwuj element
         observer.observe(element);
     });
@@ -155,15 +155,15 @@ function initScrollAnimations() {
 
 function initContactForm() {
     const form = document.getElementById('contact-form');
-    
+
     if (form) {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Zbierz dane z formularza
             const formData = new FormData(form);
             const data = Object.fromEntries(formData);
-            
+
             // Walidacja
             if (validateForm(data)) {
                 showMessage('Dziękujemy za wiadomość! Skontaktujemy się wkrótce.', 'success');
@@ -175,26 +175,26 @@ function initContactForm() {
 
 function validateForm(data) {
     const errors = [];
-    
+
     // Sprawdź wymagane pola
     if (!data.name || data.name.trim().length < 2) {
         errors.push('Imię i nazwisko jest wymagane (min. 2 znaki)');
     }
-    
+
     if (!data.email || !isValidEmail(data.email)) {
         errors.push('Podaj prawidłowy adres email');
     }
-    
+
     if (!data.service) {
         errors.push('Wybierz usługę');
     }
-    
+
     // Pokaż błędy lub sukces
     if (errors.length > 0) {
         showMessage(errors.join('<br>'), 'error');
         return false;
     }
-    
+
     return true;
 }
 
@@ -209,12 +209,12 @@ function showMessage(message, type) {
     if (existingMessage) {
         existingMessage.remove();
     }
-    
+
     // Stwórz nowy komunikat
     const messageDiv = document.createElement('div');
     messageDiv.className = `form-message form-message--${type}`;
     messageDiv.innerHTML = message;
-    
+
     // Style dla komunikatu
     messageDiv.style.cssText = `
         padding: 15px;
@@ -222,16 +222,16 @@ function showMessage(message, type) {
         border-radius: 8px;
         font-weight: 500;
         animation: fadeInUp 0.3s ease;
-        ${type === 'success' ? 
+        ${type === 'success' ?
             'background: #d4edda; color: #155724; border: 1px solid #c3e6cb;' :
             'background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;'
         }
     `;
-    
+
     // Wstaw komunikat
     const form = document.getElementById('contact-form');
     form.appendChild(messageDiv);
-    
+
     // Usuń komunikat po 5 sekundach
     setTimeout(() => {
         if (messageDiv.parentNode) {
@@ -247,12 +247,12 @@ function showMessage(message, type) {
 
 function initGalleryLightbox() {
     const galleryItems = document.querySelectorAll('.gallery-item');
-    
+
     galleryItems.forEach(item => {
-        item.addEventListener('click', function() {
+        item.addEventListener('click', function () {
             const img = this.querySelector('img');
             const title = this.querySelector('h4').textContent;
-            
+
             // Tutaj można dodać lightbox/modal
             console.log('Otwórz lightbox dla:', title);
         });
@@ -293,10 +293,10 @@ function isElementInViewport(el) {
 
 // Parallax dla hero sekcji (opcjonalnie)
 function initParallax() {
-    window.addEventListener('scroll', debounce(function() {
+    window.addEventListener('scroll', debounce(function () {
         const scrolled = window.pageYOffset;
         const hero = document.querySelector('.hero');
-        
+
         if (hero && scrolled < hero.offsetHeight) {
             hero.style.transform = `translateY(${scrolled * 0.5}px)`;
         }
@@ -306,13 +306,13 @@ function initParallax() {
 // Licznik animowany (dla statystyk)
 function animateCounters() {
     const counters = document.querySelectorAll('.counter');
-    
+
     counters.forEach(counter => {
         const target = parseInt(counter.getAttribute('data-target'));
         const duration = 2000; // 2 sekundy
         const increment = target / (duration / 16); // 60fps
         let current = 0;
-        
+
         const updateCounter = () => {
             current += increment;
             if (current < target) {
@@ -322,7 +322,7 @@ function animateCounters() {
                 counter.textContent = target;
             }
         };
-        
+
         updateCounter();
     });
 }
@@ -336,19 +336,19 @@ let currentModalCertificate = 1;
 function openCertificate(imageSrc) {
     const modal = document.getElementById('certificateModal');
     const modalImg = document.getElementById('certificateImage');
-    
+
     // Znajdź numer certyfikatu na podstawie src
     const certNumber = imageSrc.match(/Certyfikat(\d+)\.jpg/);
     if (certNumber) {
         currentModalCertificate = parseInt(certNumber[1]);
     }
-    
+
     modal.style.display = 'block';
     modalImg.src = imageSrc;
-    
+
     // Aktualizuj licznik i przyciski modala
     updateModalDisplay();
-    
+
     // Blokada przewijania strony
     document.body.style.overflow = 'hidden';
 }
@@ -356,7 +356,7 @@ function openCertificate(imageSrc) {
 function closeCertificate() {
     const modal = document.getElementById('certificateModal');
     modal.style.display = 'none';
-    
+
     // Przywrócenie przewijania strony
     document.body.style.overflow = 'auto';
 }
@@ -367,13 +367,13 @@ function updateModalDisplay() {
     const modalTotal = document.getElementById('modal-cert-total');
     const prevBtn = document.querySelector('.modal-prev');
     const nextBtn = document.querySelector('.modal-next');
-    
+
     // Aktualizuj obraz
     if (modalImg) {
         modalImg.src = `images/Certyfikat${currentModalCertificate}.jpg`;
         modalImg.alt = `Certyfikat ${currentModalCertificate}`;
     }
-    
+
     // Aktualizuj licznik
     if (modalCurrent) {
         modalCurrent.textContent = currentModalCertificate;
@@ -381,7 +381,7 @@ function updateModalDisplay() {
     if (modalTotal) {
         modalTotal.textContent = totalCertificates;
     }
-    
+
     // Aktualizuj stan przycisków
     if (prevBtn) {
         prevBtn.disabled = currentModalCertificate === 1;
@@ -406,10 +406,10 @@ function nextModalCertificate() {
 }
 
 // Zamykanie modala klawiszem ESC i nawigacja strzałkami
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     const modal = document.getElementById('certificateModal');
     if (modal.style.display === 'block') {
-        switch(event.key) {
+        switch (event.key) {
             case 'Escape':
                 closeCertificate();
                 break;
@@ -513,12 +513,12 @@ function getVisibleCertificates() {
 
 function updateCertificateDisplay() {
     const visibleCertificates = getVisibleCertificates();
-    
+
     // Aktualizuj źródła obrazów dla widocznych certyfikatów
     for (let i = 0; i < 3; i++) {
         const certImage = document.getElementById(`certificate-${i + 1}`);
         const certIndex = currentCertificateStart + i;
-        
+
         if (certImage) {
             if (i < visibleCertificates && certIndex <= totalCertificates) {
                 certImage.src = `images/Certyfikat${certIndex}.jpg`;
@@ -529,11 +529,11 @@ function updateCertificateDisplay() {
             }
         }
     }
-    
+
     // Aktualizuj licznik
     const certCurrent = document.getElementById('cert-current');
     const certTotal = document.getElementById('cert-total');
-    
+
     if (certCurrent) {
         const endIndex = Math.min(currentCertificateStart + visibleCertificates - 1, totalCertificates);
         if (visibleCertificates === 1) {
@@ -542,19 +542,19 @@ function updateCertificateDisplay() {
             certCurrent.textContent = `${currentCertificateStart}-${endIndex}`;
         }
     }
-    
+
     if (certTotal) {
         certTotal.textContent = totalCertificates;
     }
-    
+
     // Aktualizuj stan przycisków
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
-    
+
     if (prevBtn) {
         prevBtn.disabled = currentCertificateStart === 1;
     }
-    
+
     if (nextBtn) {
         nextBtn.disabled = currentCertificateStart + visibleCertificates - 1 >= totalCertificates;
     }
@@ -576,12 +576,12 @@ function nextCertificate() {
 }
 
 // Dodaj event listener dla zmiany rozmiaru okna
-window.addEventListener('resize', function() {
+window.addEventListener('resize', function () {
     updateCertificateDisplay();
 });
 
 // Inicjalizacja carousel po załadowaniu strony
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     updateCertificateDisplay();
 });
 
