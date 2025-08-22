@@ -12,6 +12,15 @@
     <link rel="icon" type="image/jpeg" href="images/logo.jpg">
     <link rel="apple-touch-icon" href="images/logo.jpg">
     <!-- Domain redirect script -->
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4VMM3NXJ6S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4VMM3NXJ6S');
+    </script>
+
     <script>
         if (location.host === 'salonzpazurem.pl') {
             location.replace('https://www.salonzpazurem.pl' + location.pathname + location.search + location.hash);
@@ -530,13 +539,6 @@ W pracy natomiast stawiam na spokój, uważność i profesjonalizm – słucham,
                     <div class="footer-text">
                         <h3>Z Pazurem</h3>
                         <p>Salon Kosmetyczny</p>
-                    </div>
-                </div>
-                <div class="footer-right">
-                    <div class="visitor-counter">
-                        <i class="fas fa-eye counter-icon"></i>
-                        <span class="counter-text">Odwiedziny: </span>
-                        <span class="counter-number" id="visitor-count">---</span>
                     </div>
                 </div>
             </div>

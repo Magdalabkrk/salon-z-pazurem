@@ -581,7 +581,7 @@ function initVisitorCounter() {
     try {
         // Pobierz aktualną liczbę odwiedzin z localStorage
         let visitCount = localStorage.getItem('salon-visit-count');
-        
+
         if (visitCount === null) {
             // Pierwsza wizyta - ustaw losową liczbę startową (realistyczną)
             visitCount = Math.floor(Math.random() * 500) + 1250; // 1250-1750
@@ -590,7 +590,7 @@ function initVisitorCounter() {
             // Sprawdź czy to nowa sesja (nie odwiedzał dziś)
             const lastVisit = localStorage.getItem('salon-last-visit');
             const today = new Date().toDateString();
-            
+
             if (lastVisit !== today) {
                 // Nowy dzień - zwiększ licznik o 1-3 (symuluje inne odwiedziny)
                 visitCount = parseInt(visitCount) + Math.floor(Math.random() * 3) + 1;
@@ -601,7 +601,7 @@ function initVisitorCounter() {
 
         // Animowane wyświetlenie liczby
         animateVisitorCounter(counterElement, parseInt(visitCount));
-        
+
     } catch (error) {
         console.log('Błąd localStorage:', error);
         // Fallback - wyświetl statyczną liczbę jeśli localStorage nie działa
@@ -614,15 +614,15 @@ function animateVisitorCounter(element, targetNumber) {
     const startNumber = 0;
     const increment = targetNumber / (duration / 16); // 60 FPS
     let currentNumber = startNumber;
-    
+
     const timer = setInterval(() => {
         currentNumber += increment;
-        
+
         if (currentNumber >= targetNumber) {
             currentNumber = targetNumber;
             clearInterval(timer);
         }
-        
+
         // Formatuj liczbę z separatorem tysięcy
         element.textContent = Math.floor(currentNumber).toLocaleString('pl-PL');
     }, 16);
@@ -650,13 +650,13 @@ function updateCertificateDisplay() {
 
     // Aktualizuj źródła obrazów dla widocznych certyfikatów
     for (let i = 0; i < 3; i++) {
-        const certImage = document.getElementById(`certificate - ${ i + 1}`);
+        const certImage = document.getElementById(`certificate - ${i + 1}`);
         const certIndex = currentCertificateStart + i;
 
         if (certImage) {
             if (i < visibleCertificates && certIndex <= totalCertificates) {
-                certImage.src = `images / Certyfikat${ certIndex }.jpg`;
-                certImage.alt = `Certyfikat ${ certIndex }`;
+                certImage.src = `images / Certyfikat${certIndex}.jpg`;
+                certImage.alt = `Certyfikat ${certIndex}`;
                 certImage.parentElement.style.display = 'block';
             } else {
                 certImage.parentElement.style.display = 'none';
@@ -673,7 +673,7 @@ function updateCertificateDisplay() {
         if (visibleCertificates === 1) {
             certCurrent.textContent = currentCertificateStart;
         } else {
-            certCurrent.textContent = `${ currentCertificateStart } - ${ endIndex }`;
+            certCurrent.textContent = `${currentCertificateStart} - ${endIndex}`;
         }
     }
 
