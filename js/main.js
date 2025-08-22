@@ -571,7 +571,10 @@ console.log(`
 
 function initVisitorCounter() {
     const counterElement = document.getElementById('visitor-count');
-    if (!counterElement) return;
+    if (!counterElement) {
+        console.log('Element visitor-count nie został znaleziony');
+        return;
+    }
 
     try {
         // Pobierz aktualną liczbę odwiedzin z localStorage
@@ -595,15 +598,16 @@ function initVisitorCounter() {
         }
 
         // Animowane wyświetlenie liczby
-        animateCounter(counterElement, parseInt(visitCount));
+        animateVisitorCounter(counterElement, parseInt(visitCount));
         
     } catch (error) {
+        console.log('Błąd localStorage:', error);
         // Fallback - wyświetl statyczną liczbę jeśli localStorage nie działa
         counterElement.textContent = '1,347';
     }
 }
 
-function animateCounter(element, targetNumber) {
+function animateVisitorCounter(element, targetNumber) {
     const duration = 2000; // 2 sekundy
     const startNumber = 0;
     const increment = targetNumber / (duration / 16); // 60 FPS
