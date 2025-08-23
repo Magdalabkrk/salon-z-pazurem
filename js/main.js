@@ -156,7 +156,7 @@ function initScrollAnimations() {
 function initContactForm() {
     // Inicjalizacja EmailJS
     emailjs.init("iaI1bzUrqLe1I3z0K"); // Twój klucz publiczny EmailJS
-    
+
     const form = document.getElementById('contact-form');
     const statusDiv = document.getElementById('form-status');
 
@@ -172,19 +172,19 @@ function initContactForm() {
 
             // Wyślij email przez EmailJS
             emailjs.sendForm('service_6l8t1mk', 'template_m3pzef2', form)
-                .then(function() {
+                .then(function () {
                     statusDiv.innerHTML = '<p style="color: green;">✅ Wiadomość została wysłana! Skontaktujemy się wkrótce.</p>';
                     form.reset();
-                    
+
                     // Przekieruj na stronę dzięki po 2 sekundach
-                    setTimeout(function() {
+                    setTimeout(function () {
                         window.location.href = 'dziekuje.html';
                     }, 2000);
-                }, function(error) {
+                }, function (error) {
                     console.log('FAILED...', error);
                     statusDiv.innerHTML = '<p style="color: red;">❌ Wystąpił błąd. Spróbuj ponownie lub zadzwoń: 668 567 543</p>';
                 })
-                .finally(function() {
+                .finally(function () {
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
                 });
@@ -360,7 +360,7 @@ const galleryData = {
     'stylizacja-paznokci': [
         '1.jpeg', '2.jpeg', '3.jpg', '4.jpg', '5.jpg',
         '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg',
-        '11.jpg', '12.jpg', '13.jpg'
+        '11.jpg', '12.jpg', '13.jpg', '14.jpeg'
     ],
     'brwi-rzesy': [
         '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg',
