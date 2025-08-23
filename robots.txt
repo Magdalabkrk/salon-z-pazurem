@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.salonzpazurem.pl/sitemap.xml
+
+# Disallow certain file types
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /css/
+Disallow: /js/
